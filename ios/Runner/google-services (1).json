@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "55787170248",
+    "project_id": "bytestodo",
+    "storage_bucket": "bytestodo.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:55787170248:android:d5b772d8affe1b0cfab8fd",
+        "android_client_info": {
+          "package_name": "com.example.bytestodo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHOJWDmzhEFDerPDnFVKA5FcIKm0PI87Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
