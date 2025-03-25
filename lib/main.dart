@@ -1,5 +1,4 @@
 import 'package:bytestodo/Login.dart';
-import 'package:bytestodo/TaskPlannerScreen.dart';
 import 'package:bytestodo/voicebot/voicebotscreen.dart';
 
 import 'package:bytestodo/signup_screen.dart.dart';
@@ -59,7 +58,7 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:TaskPlannerScreen(),
+      home:VoiceBotApp(),
       routes: {
         '/signup': (context) => const Signup(),
         '/login': (context) => const Login(),

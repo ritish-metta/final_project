@@ -1,9 +1,12 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:http/http.dart' as http;
 import 'package:speech_to_text/speech_recognition_result.dart' as stt;
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:permission_handler/permission_handler.dart';
+import 'pdf_generator.dart';
 
 class VoiceBotApp extends StatefulWidget {
   const VoiceBotApp({super.key});
@@ -13,6 +16,12 @@ class VoiceBotApp extends StatefulWidget {
 }
 
 class _VoiceBotAppState extends State {
+  void _clearTranscriptions() {
+    setState(() {
+      _transcriptionHistory.clear();
+      _liveText = '';
+    });
+  }
   final List<Map<String, String>> _messages = [];
   bool _isListening = false;
   final FlutterTts _flutterTts = FlutterTts();
@@ -24,6 +33,7 @@ class _VoiceBotAppState extends State {
   bool _showTranscription = false;
   Timer? _silenceTimer;
   bool _isInitialized = false;
+  bool _isGeneratingPDF = false;
 
   @override
   void initState() {
@@ -158,17 +168,68 @@ class _VoiceBotAppState extends State {
     }
   }
 
-  void _generatePDF() {
-    // TODO: Implement PDF generation using the _transcriptionHistory
-    print('Generating PDF with transcriptions: $_transcriptionHistory');
-  }
 
-  void _clearTranscriptions() {
+
+
+  // ... [Previous methods remain the same] ...
+
+  Future<void> _generatePDF() async {
+  if (_transcriptionHistory.isEmpty) return;
+
+  setState(() {
+    _isGeneratingPDF = true;
+    _errorMessage = '';
+  });
+
+  try {
+    // Prepare the request
+    var request = http.MultipartRequest(
+      'POST',
+      Uri.parse('https://f9b1-49-43-226-169.ngrok-free.app/generate-notes/'), // Replace with your actual endpoint
+    );
+
+    // Add transcriptions as form data (like key-value pairs)
+    for (var i = 0; i < _transcriptionHistory.length; i++) {
+      request.fields['transcription_$i'] = _transcriptionHistory[i];
+    }
+
+    // Send the request
+    var streamedResponse = await request.send();
+    var response = await http.Response.fromStream(streamedResponse);
+
+    if (response.statusCode == 200) {
+      // Parse the response to get the PDF URL
+      final responseBody = jsonDecode(response.body);
+      final pdfUrl = responseBody['pdfUrl'];
+
+      if (pdfUrl != null) {
+        // Navigate to PDF Viewer Screen
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => PDFViewerScreen(pdfUrl: pdfUrl),
+          ),
+        );
+      } else {
+        setState(() {
+          _errorMessage = 'Failed to generate PDF';
+        });
+      }
+    } else {
+      setState(() {
+        _errorMessage = 'Failed to generate PDF. Status code: ${response.statusCode}';
+      });
+    }
+  } catch (e) {
     setState(() {
-      _transcriptionHistory.clear();
-      _showTranscription = false;
+      _errorMessage = 'Error generating PDF: $e';
+    });
+  } finally {
+    setState(() {
+      _isGeneratingPDF = false;
     });
   }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -296,6 +357,8 @@ class _VoiceBotAppState extends State {
                 ),
               ],
             ),
+
+
             if (_showTranscription)
               Center(
                 child: Container(
@@ -370,4 +433,4 @@ class _VoiceBotAppState extends State {
       ),
     );
   }
-}
+}/// End of VoiceBotApp class
