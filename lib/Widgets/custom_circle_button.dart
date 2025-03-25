@@ -23,7 +23,7 @@ class CustomCircleButton extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: Colors.white, // Set the background color to white
+            color: const Color.fromARGB(255, 212, 209, 12), // Set the background color to white
           ),
           width: MediaQuery.of(context).size.height *
               0.07, // Diameter of the button

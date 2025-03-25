@@ -14,7 +14,7 @@ class InputField extends StatelessWidget {
     required this.hintText,
     this.controller,
     this.keyboardType,
-    this.obscureText = false,
+    this.obscureText = false, required MaterialColor border,
   });
 
   @override
@@ -41,7 +41,7 @@ class InputField extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: const Color.fromARGB(51, 157, 192, 230),
                     borderRadius: const BorderRadius.all(Radius.circular(50)),
-                    border: Border.all(color: const Color.fromARGB(201, 30, 11, 234), width: 0.9),
+                    border: Border.all(color: const Color.fromARGB(200, 208, 234, 11), width: 0.9),
                   ),
                   child: TextField(
                     controller: controller,
@@ -50,7 +50,7 @@ class InputField extends StatelessWidget {
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: hintText,
-                      hintStyle: const TextStyle(color: Color.fromARGB(93, 57, 13, 236)),
+                      hintStyle: const TextStyle(color: Color.fromARGB(93, 236, 225, 13)),
                       contentPadding:
                           const EdgeInsets.only(left: 10, bottom: 10),
                     ),

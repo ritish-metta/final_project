@@ -28,8 +28,8 @@ class _LoginState extends State<Login> {
           Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 0, 47, 255),
+            decoration: BoxDecoration(
+              color:  const Color.fromARGB(179, 14, 14, 14),
             ),
             child: SingleChildScrollView(
               child: Center(
@@ -45,7 +45,7 @@ class _LoginState extends State<Login> {
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height * 0.8,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: const Color.fromARGB(178, 13, 13, 13),
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(100),
                             topRight: Radius.circular(100),
@@ -56,7 +56,7 @@ class _LoginState extends State<Login> {
                           children: [
                             SizedBox(height: MediaQuery.of(context).size.height * 0.04),
                             Image.asset(
-                              'lib/Screenshot 2025-02-05 223126.png',
+                              'lib/images.png',
                               width: 100,
                               height: 100,
                               fit: BoxFit.contain,
@@ -65,7 +65,7 @@ class _LoginState extends State<Login> {
                             Text(
                               'Welcome Back!',
                               style: TextStyle(
-                                color: const Color.fromARGB(255, 55, 44, 102),
+                                color: const Color.fromARGB(255, 221, 210, 4),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 29,
                               ),
@@ -79,6 +79,7 @@ class _LoginState extends State<Login> {
                                     controller: _emailController,
                                     title: 'Email id',
                                     hintText: 'Enter your email',
+                                    border: Colors.yellow,
                                   ),
                                   SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                                   InputField(
@@ -86,6 +87,7 @@ class _LoginState extends State<Login> {
                                     hintText: 'Enter your password',
                                     controller: _passwordController,
                                     obscureText: true,
+                                    border: Colors.yellow,
                                   ),
                                 ],
                               ),
@@ -100,9 +102,9 @@ class _LoginState extends State<Login> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Don’t have an account?',
+                                  'Don\'t have an account?',
                                   style: TextStyle(
-                                    color: const Color.fromARGB(93, 57, 13, 236),
+                                    color: const Color.fromARGB(93, 220, 209, 6),
                                     fontSize: 15,
                                   ),
                                 ),
@@ -111,7 +113,7 @@ class _LoginState extends State<Login> {
                                   child: Text(
                                     'Sign up',
                                     style: TextStyle(
-                                      color: const Color.fromARGB(93, 57, 13, 236),
+                                      color: const Color.fromARGB(93, 209, 213, 4),
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -123,7 +125,7 @@ class _LoginState extends State<Login> {
                             Text(
                               "OR",
                               style: TextStyle(
-                                color: const Color.fromARGB(93, 57, 13, 236),
+                                color: const Color.fromARGB(93, 184, 204, 4),
                                 fontSize: MediaQuery.of(context).size.height * 0.02,
                                 fontWeight: FontWeight.w300,
                               ),

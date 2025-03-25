@@ -46,6 +46,9 @@ dependencies:
   flutter_svg: ^0.22.0
   json_annotation: ^4.9.0
   convert: ^3.1.2
+  flutter_tts: ^4.2.2
+  speech_to_text: ^7.0.0
+  permission_handler: ^11.3.1
   
 
 dev_dependencies:
@@ -77,6 +80,7 @@ flutter:
     - lib/images/googleLogo.png
     - lib/images/login_background.jpg
     - lib/images/metaLogo.png
+    - lib/images.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

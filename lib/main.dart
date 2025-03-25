@@ -1,6 +1,7 @@
 import 'package:bytestodo/Login.dart';
 import 'package:bytestodo/TaskPlannerScreen.dart';
-import 'package:bytestodo/homescreen.dart';
+import 'package:bytestodo/voicebot/voicebotscreen.dart';
+
 import 'package:bytestodo/signup_screen.dart.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -58,11 +59,11 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: TaskPlannerScreen(),
+      home:TaskPlannerScreen(),
       routes: {
         '/signup': (context) => const Signup(),
         '/login': (context) => const Login(),
-        '/home': (context) => const HomeScreen(),
+        '/home': (context) => const VoiceBotApp(),
       },
     );
   }

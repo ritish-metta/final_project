@@ -1,0 +1,2 @@
+D:/bytestodolist/bytestodo/android/app/.cxx/RelWithDebInfo/5e5o2i13/x86_64/CMakeFiles/edit_cache.dir
+D:/bytestodolist/bytestodo/android/app/.cxx/RelWithDebInfo/5e5o2i13/x86_64/CMakeFiles/rebuild_cache.dir

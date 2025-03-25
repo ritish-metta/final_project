@@ -13,7 +13,7 @@ class TaskPlannerScreen extends StatelessWidget {
               width: double.infinity, // Adjust if needed
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Colors.white,
+                color:Colors.grey.shade900,
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.3),
@@ -30,12 +30,12 @@ class TaskPlannerScreen extends StatelessWidget {
                     child: Row(
                       children: <Widget>[
                         Text(
-                          "Whatbytes",
+                          "VoxaScript",
                           style: TextStyle(
                             fontSize: 40,
                             fontWeight: FontWeight.w900,
                             fontStyle: FontStyle.italic,  // This makes the text italic
-                            color: const Color.fromARGB(184, 10, 32, 129),
+                            color: Colors.yellow.shade700,
                           ),
                         ),
                       ],
@@ -61,7 +61,7 @@ class TaskPlannerScreen extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 26,
                             fontWeight: FontWeight.w900,
-                            color: const Color.fromARGB(184, 10, 32, 129),
+                            color: Colors.yellow.shade700,
                           ),
                         ),
                         SizedBox(height: 10),
@@ -92,7 +92,7 @@ class TaskPlannerScreen extends StatelessWidget {
                 width: 320, // Extending width beyond screen
                 height: 320,
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 44, 73, 236),
+                  color: Colors.yellow.shade700,
                   borderRadius: BorderRadius.circular(200),
                   boxShadow: [
                     BoxShadow(
@@ -108,7 +108,7 @@ class TaskPlannerScreen extends StatelessWidget {
                   child: Center(
                     child: Icon(
                       Icons.arrow_forward,
-                      color: Colors.white,
+                      color: const Color.fromARGB(255, 254, 254, 252),
                       size: 70,
                     ),
                   ),
@@ -167,7 +167,7 @@ class _AnimatedGlowImageState extends State<AnimatedGlowImage>
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                color: Colors.blue.withOpacity(_glowAnimation.value),
+                color:  Colors.yellow.shade700.withOpacity(_glowAnimation.value),
                 spreadRadius: 10,
                 blurRadius: 20,
               ),
@@ -176,7 +176,7 @@ class _AnimatedGlowImageState extends State<AnimatedGlowImage>
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: Image.asset(
-              'lib/Screenshot 2025-02-05 223126.png',
+              'lib/images.png',
               fit: BoxFit.contain,
             ),
           ),

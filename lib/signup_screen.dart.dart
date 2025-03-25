@@ -27,15 +27,15 @@ class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: true,
       body: Stack(
         children: [
           // Main background content
           Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 0, 47, 255),
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(179, 14, 14, 14),
             ),
             child: SingleChildScrollView(
               child: Center(
@@ -51,7 +51,7 @@ class _SignupState extends State<Signup> {
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height * 0.8,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: const Color.fromARGB(178, 13, 13, 13),
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(100),
                             topRight: Radius.circular(100),
@@ -62,7 +62,7 @@ class _SignupState extends State<Signup> {
                           children: [
                             SizedBox(height: MediaQuery.of(context).size.height * 0.04),
                             Image.asset(
-                              'lib/Screenshot 2025-02-05 223126.png',
+                              'lib/images.png',
                               width: 100,
                               height: 100,
                               fit: BoxFit.contain,
@@ -71,7 +71,7 @@ class _SignupState extends State<Signup> {
                             Text(
                               'Let`s get started!',
                               style: TextStyle(
-                                color: const Color.fromARGB(255, 55, 44, 102),
+                                color: const Color.fromARGB(255, 194, 202, 34),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 29,
                               ),
@@ -85,6 +85,7 @@ class _SignupState extends State<Signup> {
                                     controller: _emailController,
                                     title: 'Email id',
                                     hintText: 'Enter your email',
+                                    border: Colors.yellow,
                                   ),
                                   SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                                   InputField(
@@ -92,6 +93,7 @@ class _SignupState extends State<Signup> {
                                     hintText: 'Enter your password',
                                     controller: _passwordController,
                                     obscureText: true,
+                                    border:Colors.yellow,
                                   ),
                                 ],
                               ),
@@ -110,7 +112,7 @@ class _SignupState extends State<Signup> {
                                 Text(
                                   'Already have an account?',
                                   style: TextStyle(
-                                    color: const Color.fromARGB(93, 57, 13, 236),
+                                    color: const Color.fromARGB(93, 175, 223, 2),
                                     fontSize: 15,
                                   ),
                                 ),
@@ -119,7 +121,7 @@ class _SignupState extends State<Signup> {
                                   child: Text(
                                     'Login',
                                     style: TextStyle(
-                                      color: const Color.fromARGB(93, 57, 13, 236),
+                                      color: const Color.fromARGB(93, 199, 236, 13),
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -131,7 +133,7 @@ class _SignupState extends State<Signup> {
                             Text(
                               "OR",
                               style: TextStyle(
-                                color: const Color.fromARGB(93, 57, 13, 236),
+                                color: const Color.fromARGB(93, 204, 211, 4),
                                 fontSize: MediaQuery.of(context).size.height * 0.02,
                                 fontWeight: FontWeight.w300,
                               ),
@@ -187,64 +189,64 @@ class _SignupState extends State<Signup> {
   }
 
   Function createAccountHandler(BuildContext context) {
-  return () async {
-    final email = _emailController.text.trim();
-    final password = _passwordController.text.trim();
+    return () async {
+      final email = _emailController.text.trim();
+      final password = _passwordController.text.trim();
 
-    if (email.isEmpty || password.isEmpty) {
-      // Show error if email or password is empty
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please fill in all fields.')),
-      );
-      return;
-    }
-
-    // Validate email format
-    if (!RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$").hasMatch(email)) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please enter a valid email address.')),
-      );
-      return;
-    }
-
-    try {
-      // Attempt to create a new account
-      final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      
-      // Handle successful signup
-      if (userCredential.user != null) {
-        Navigator.pushNamed(context, '/home');
+      if (email.isEmpty || password.isEmpty) {
+        // Show error if email or password is empty
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Please fill in all fields.')),
+        );
+        return;
       }
-    } on FirebaseAuthException catch (e) {
-      // Handle Firebase errors
-      if (e.code == 'weak-password') {
+
+      // Validate email format
+      if (!RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$").hasMatch(email)) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('The password is too weak. Choose a stronger password.')),
+          SnackBar(content: Text('Please enter a valid email address.')),
         );
-      } else if (e.code == 'email-already-in-use') {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('An account already exists for this email.')),
+        return;
+      }
+
+      try {
+        // Attempt to create a new account
+        final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: email,
+          password: password,
         );
-      } else if (e.code == 'invalid-email') {
+        
+        // Handle successful signup
+        if (userCredential.user != null) {
+          Navigator.pushNamed(context, '/home');
+        }
+      } on FirebaseAuthException catch (e) {
+        // Handle Firebase errors
+        if (e.code == 'weak-password') {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('The password is too weak. Choose a stronger password.')),
+          );
+        } else if (e.code == 'email-already-in-use') {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('An account already exists for this email.')),
+          );
+        } else if (e.code == 'invalid-email') {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('The email address is not valid.')),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Signup failed. Try again later.')),
+          );
+        }
+      } catch (e) {
+        // Handle any other errors
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('The email address is not valid.')),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Signup failed. Try again later.')),
+          SnackBar(content: Text('An unexpected error occurred. Please try again.')),
         );
       }
-    } catch (e) {
-      // Handle any other errors
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('An unexpected error occurred. Please try again.')),
-      );
-    }
-  };
-}
+    };
+  }
 
   Function loginHandler(BuildContext context) {
     return () {
