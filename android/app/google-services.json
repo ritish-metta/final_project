@@ -1,26 +1,36 @@
 {
   "project_info": {
-    "project_number": "55787170248",
-    "project_id": "bytestodo",
-    "storage_bucket": "bytestodo.firebasestorage.app"
+    "project_number": "961007568234",
+    "project_id": "dwindex-14541",
+    "storage_bucket": "dwindex-14541.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:55787170248:android:d5b772d8affe1b0cfab8fd",
+        "mobilesdk_app_id": "1:961007568234:android:608985653874e380e95113",
         "android_client_info": {
           "package_name": "com.example.bytestodo"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "961007568234-oupqln7ch055ec4eifhi2e2889vnqel3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyCHOJWDmzhEFDerPDnFVKA5FcIKm0PI87Y"
+          "current_key": "AIzaSyDRBnFPbL-Yrm1mmM4Zz8kqB0cfh3757cs"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "961007568234-oupqln7ch055ec4eifhi2e2889vnqel3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
